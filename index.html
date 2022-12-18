@@ -4,29 +4,38 @@
       body {
         background-color: black;
       }
-      #flickeringText {
+      .flickeringText {
         color: white;
         position: absolute;
       }
     </style>
   </head>
   <body>
-    <div id="flickeringText">Fuck you Linus</div>
+    <div class="flickeringText">Fuck you Linus</div>
+    <div class="flickeringText">Fuck you Linus</div>
+    <div class="flickeringText">Fuck you Linus</div>
+    <div class="flickeringText">Fuck you Linus</div>
+    <div class="flickeringText">Fuck you Linus</div>
     <audio id="audio" src="https://cdn.discordapp.com/attachments/1032350331985723542/1053837164066115605/Clown_Horn_Sound_Effect.mp3" preload="auto"></audio>
 
     <script>
-      const textElement = document.getElementById("flickeringText");
+      const textElements = document.querySelectorAll(".flickeringText");
       const audioElement = document.getElementById("audio");
 
-      setInterval(function() {
-        textElement.style.left = Math.random() * window.innerWidth + "px";
-        textElement.style.top = Math.random() * window.innerHeight + "px";
-        textElement.style.fontSize = Math.random() * 50 + "px";
-      }, 500);
+      textElements.forEach(function(element, index) {
+        const interval = Math.random() * 100 + 300;
+        setInterval(function() {
+          element.style.left = Math.random() * window.innerWidth + "px";
+          element.style.top = Math.random() * window.innerHeight + "px";
+          element.style.fontSize = Math.random() * 50 + "px";
+        }, interval);
+      });
 
-      textElement.addEventListener("click", function() {
-        audioElement.currentTime = 0;
-        audioElement.play();
+      textElements.forEach(function(element) {
+        element.addEventListener("click", function() {
+          const audioClone = audioElement.cloneNode();
+          audioClone.play();
+        });
       });
     </script>
   </body>
