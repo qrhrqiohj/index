@@ -47,11 +47,11 @@
       let aPressed = false;
       let gPressed = false;
 
-      textElements.forEach(function(element, index) {
+        textElements.forEach(function(element, index) {
         const interval = Math.random() * 100 + 300;
         setInterval(function() {
-          element.style.left = Math.random() * window.innerWidth + "px";
-          element.style.top = Math.random() * window.innerHeight + "px";
+          element.style.left = Math.min(Math.random() * window.innerWidth, window.innerWidth - element.offsetWidth) + "px";
+          element.style.top = Math.min(Math.random() * window.innerHeight, window.innerHeight - element.offsetHeight) + "px";
           element.style.fontSize = Math.random() * 50 + "px";
         }, interval);
       });
