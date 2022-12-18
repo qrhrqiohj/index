@@ -107,34 +107,40 @@
 	});
 
 	document.addEventListener("keydown", function(event) {
-  	if (tally === 69) {
-    	return;
-  	}
+  // check if the tally is already at 69
+  if (tally === 69) {
+    return;
+  }
 
-  	if (event.key === "f") {
-    	fPressed = true;
-  	}
-  	if (event.key === "a") {
-    	aPressed = true;
-  	}
-  	if (event.key === "g") {
-   	gPressed = true;
-  	}
+  // check if the key pressed is "f"
+  if (event.key === "f") {
+    fPressed = true;
+  }
+  // check if the key pressed is "a"
+  if (event.key === "a") {
+    aPressed = true;
+  }
+  // check if the key pressed is "g"
+  if (event.key === "g") {
+    gPressed = true;
+  }
 
-  	tally++;
-  	tallyElement.innerHTML = `Fucks given to Linus: ${tally}/69`;
+  // increment the tally and update the tally element
+  tally++;
+  tallyElement.innerHTML = `Fucks given to Linus: ${tally}/69`;
 
-  	audioElement.currentTime = 0;
-  	audioElement.play();
+  // play the audio
+  audioElement.currentTime = 0;
+  audioElement.play();
 
-  	if (tally === 69 && fPressed && aPressed && gPressed) {
-    	// show the box and play the box audio
-    	boxElement.style.display = "block";
-    	boxAudioElement.currentTime = 0;
-    	boxAudioElement.play();
-  	}
-	});
-
+  // check if the tally is at 69 and all three keys are pressed
+  if (tally === 69 && fPressed && aPressed && gPressed) {
+    // show the box and play the box audio
+    boxElement.style.display = "block";
+    boxAudioElement.currentTime = 0;
+    boxAudioElement.play();
+  }
+});
 
 	document.addEventListener("keyup", function(event) {
   	if (event.code === "KeyF") {
