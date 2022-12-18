@@ -90,10 +90,10 @@
           const audioClone = audioElement.cloneNode();
           audioClone.play();
           tally++;
-          if (tally > 69) {
-            tally = 69;
-          }
           tallyElement.textContent = `Fucks given to Linus: ${tally}/69`;
+          if (tally === 69) {
+            document.getElementById("box").style.display = "block";
+          }
         });
       });
     </script>
