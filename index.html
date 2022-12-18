@@ -8,6 +8,12 @@
         color: white;
         position: absolute;
       }
+      #tally {
+        color: white;
+        position: absolute;
+        top: 0;
+        left: 0;
+      }
     </style>
   </head>
   <body>
@@ -17,10 +23,13 @@
     <div class="flickeringText">Fuck you Linus</div>
     <div class="flickeringText">Fuck you Linus</div>
     <audio id="audio" src="https://cdn.discordapp.com/attachments/1032350331985723542/1053837164066115605/Clown_Horn_Sound_Effect.mp3" preload="auto"></audio>
+    <div id="tally">Tally: 0</div>
 
     <script>
       const textElements = document.querySelectorAll(".flickeringText");
       const audioElement = document.getElementById("audio");
+      const tallyElement = document.getElementById("tally");
+      let tally = 0;
 
       textElements.forEach(function(element, index) {
         const interval = Math.random() * 100 + 300;
@@ -35,6 +44,8 @@
         element.addEventListener("click", function() {
           const audioClone = audioElement.cloneNode();
           audioClone.play();
+          tally++;
+          tallyElement.textContent = `Tally: ${tally}`;
         });
       });
     </script>
