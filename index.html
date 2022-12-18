@@ -38,57 +38,63 @@
     <div class="box" id="box" style="display: none;"></div>
 
     <script>
-  const textElements = document.querySelectorAll(".flickeringText");
-  const audioElement = document.getElementById("audio");
-  const tallyElement = document.getElementById("tally");
-  const boxElement = document.getElementById("box");
-  let tally = 0;
-  let fPressed = false;
-  let aPressed = false;
-  let gPressed = false;
+      const textElements = document.querySelectorAll(".flickeringText");
+      const audioElement = document.getElementById("audio");
+      const tallyElement = document.getElementById("tally");
+      const boxElement = document.getElementById("box");
+      let tally = 0;
+      let fPressed = false;
+      let aPressed = false;
+      let gPressed = false;
 
-  textElements.forEach(function(element) {
-    element.addEventListener("click", function() {
-      const audioClone = audioElement.cloneNode();
-      audioClone.play();
-      tally++;
-      if (tally > 69) {
-        tally = 69;
-      }
-      tallyElement.textContent = `Fucks given to Linus: ${tally}/69`;
-    });
-  });
+      textElements.forEach(function(element, index) {
+        const interval = Math.random() * 100 + 300;
+        setInterval(function() {
+          element.style.left = Math.random() * window.innerWidth + "px";
+          element.style.top = Math.random() * window.innerHeight + "px";
+          element.style.fontSize = Math.random() * 50 + "px";
+        }, interval);
+      });
 
-  // Add keydown event listener
-  document.addEventListener('keydown', (event) => {
-    if (event.key === 'f') {
-      fPressed = true;
-    } else if (event.key === 'a') {
-      aPressed = true;
-    } else if (event.key === 'g') {
-      gPressed = true;
-    }
+      textElements.forEach(function(element) {
+        element.addEventListener("click", function() {
+          const audioClone = audioElement.cloneNode();
+          audioClone.play();
+          tally++;
+          if (tally > 69) {
+            tally = 69;
+          }
+          tallyElement.textContent = `Fucks given to Linus: ${tally}/69`;
+        });
+      });
 
-    if (fPressed && aPressed && gPressed) {
-      // Toggle the display property of the box element
-      if (boxElement.style.display === "block") {
-        boxElement.style.display = "none";
-      } else {
-        boxElement.style.display = "block";
-      }
-    }
-  });
+      document.addEventListener('keydown', (event) => {
+        if (event.key === 'f') {
+          fPressed = true;
+        } else if (event.key === 'a') {
+          aPressed = true;
+        } else if (event.key === 'g') {
+          gPressed = true;
+        }
 
-  // Add keyup event listener to reset pressed keys
-  document.addEventListener('keyup', (event) => {
-    if (event.key === 'f') {
-      fPressed = false;
-    } else if (event.key === 'a') {
-      aPressed = false;
-    } else if (event.key === 'g') {
-      gPressed = false;
-    }
-  });
-      </script>
+        if (fPressed && aPressed && gPressed) {
+          if (boxElement.style.display === "block") {
+            boxElement.style.display = "none";
+          } else {
+            boxElement.style.display = "block";
+          }
+        }
+      });
+
+      document.addEventListener('keyup', (event) => {
+        if (event.key === 'f') {
+          fPressed = false;
+        } else if (event.key === 'a') {
+          aPressed = false;
+        } else if (event.key === 'g') {
+          gPressed = false;
+        }
+      });
+    </script>
   </body>
 </html>
