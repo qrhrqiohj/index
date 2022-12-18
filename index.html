@@ -119,10 +119,12 @@
   	if (fPressed && aPressed && gPressed) {
     	if (boxVisible) {
       	boxElement.style.display = "none";
+      	boxAudioElement.currentTime = 0;
+      	boxAudioElement.pause();
       	boxVisible = false;
     	} else {
       	boxElement.style.display = "block";
-	boxAudioElement.play();
+      	boxAudioElement.play();
       	boxVisible = true;
     	}
   	}
