@@ -1,0 +1,33 @@
+<html>
+  <head>
+    <style>
+      body {
+        background-color: black;
+      }
+      #flickeringText {
+        color: white;
+        position: absolute;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="flickeringText">Fuck you Linus</div>
+    <audio id="audio" src="audio.mp3" preload="auto"></audio>
+
+    <script>
+      const textElement = document.getElementById("flickeringText");
+      const audioElement = document.getElementById("audio");
+
+      setInterval(function() {
+        textElement.style.left = Math.random() * window.innerWidth + "px";
+        textElement.style.top = Math.random() * window.innerHeight + "px";
+        textElement.style.fontSize = Math.random() * 50 + "px";
+      }, 100);
+
+      textElement.addEventListener("click", function() {
+        audioElement.currentTime = 0;
+        audioElement.play();
+      });
+    </script>
+  </body>
+</html>
