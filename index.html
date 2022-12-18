@@ -15,8 +15,8 @@
         left: 0;
       }
       .box {
-        width: calc(50vw - 10px);
-        height: calc(50vh - 10px);
+        width: calc(50vw - 10px); /* reduce the width by 10 pixels */
+        height: calc(50vh - 10px); /* reduce the height by 10 pixels */
         background-color: rgb(32, 32, 32);
         border: calc(0.5vw) solid rgb(16, 16, 16);
         border-radius: 10px;
@@ -24,8 +24,8 @@
         top: 50%;
         left: 50%;
         transform: translate(-50%, -50%);
-        box-sizing: border-box;
-        padding: 10px;
+        box-sizing: border-box; /* include the border and padding in the width and height */
+        padding: 10px; /* add some padding */
       }
       body {
         overflow: hidden;
@@ -41,13 +41,15 @@
         align-items: center;
         justify-content: center;
         margin-top: 20px;
-        text-align: center;
+        text-align: center; /* center the text */
       }
       button {
         margin-left: 10px;
       }
 
+      /* responsive styles */
       @media (max-width: 768px) {
+        /* apply these styles when the screen width is less than or equal to 768 pixels */
         .box {
           width: calc(90vw - 10px); /* increase the width to 90% of the viewport width */
         }
@@ -78,7 +80,7 @@
     </div>
 
     <script>
-      const textElements = document.querySelectorAll(".flickeringText");
+        const textElements = document.querySelectorAll(".flickeringText");
 	const audioElement = document.getElementById("audio");
 	const boxAudioElement = document.getElementById("boxAudio");
 	const tallyElement = document.getElementById("tally");
@@ -107,40 +109,20 @@
 	});
 
 	document.addEventListener("keydown", function(event) {
-  // check if the tally is already at 69
-  if (tally === 69) {
-    return;
-  }
-
-  // check if the key pressed is "f"
-  if (event.key === "f") {
-    fPressed = true;
-  }
-  // check if the key pressed is "a"
-  if (event.key === "a") {
-    aPressed = true;
-  }
-  // check if the key pressed is "g"
-  if (event.key === "g") {
-    gPressed = true;
-  }
-
-  // increment the tally and update the tally element
-  tally++;
-  tallyElement.innerHTML = `Fucks given to Linus: ${tally}/69`;
-
-  // play the audio
-  audioElement.currentTime = 0;
-  audioElement.play();
-
-  // check if the tally is at 69 and all three keys are pressed
-  if (tally === 69 && fPressed && aPressed && gPressed) {
-    // show the box and play the box audio
-    boxElement.style.display = "block";
-    boxAudioElement.currentTime = 0;
-    boxAudioElement.play();
-  }
-});
+  	if (event.code === "KeyF") {
+    	fPressed = true;
+  	}
+  	if (event.code === "KeyA") {
+    	aPressed = true;
+  	}
+  	if (event.code === "KeyG") {
+    	gPressed = true;
+  	}
+  	if (fPressed && aPressed && gPressed) {
+    	boxAudioElement.play();
+    	boxElement.style.display = "flex";
+  	}
+	});
 
 	document.addEventListener("keyup", function(event) {
   	if (event.code === "KeyF") {
