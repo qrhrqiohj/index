@@ -15,8 +15,8 @@
         left: 0;
       }
       .box {
-        width: calc(50vw - 10px); /* reduce the width by 10 pixels */
-        height: calc(50vh - 10px); /* reduce the height by 10 pixels */
+        width: calc(50vw - 10px);
+        height: calc(50vh - 10px);
         background-color: rgb(32, 32, 32);
         border: calc(0.5vw) solid rgb(16, 16, 16);
         border-radius: 10px;
@@ -24,8 +24,8 @@
         top: 50%;
         left: 50%;
         transform: translate(-50%, -50%);
-        box-sizing: border-box; /* include the border and padding in the width and height */
-        padding: 10px; /* add some padding */
+        box-sizing: border-box;
+        padding: 10px;
       }
       body {
         overflow: hidden;
@@ -41,15 +41,13 @@
         align-items: center;
         justify-content: center;
         margin-top: 20px;
-        text-align: center; /* center the text */
+        text-align: center;
       }
       button {
         margin-left: 10px;
       }
 
-      /* responsive styles */
       @media (max-width: 768px) {
-        /* apply these styles when the screen width is less than or equal to 768 pixels */
         .box {
           width: calc(90vw - 10px); /* increase the width to 90% of the viewport width */
         }
