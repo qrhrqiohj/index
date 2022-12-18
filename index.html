@@ -56,6 +56,35 @@
       const boxElement = document.getElementById('box');
       const refreshButton = document.getElementById('refreshButton');
       let tally = 0;
+      
+      const boxElement = document.createElement('div');
+      boxElement.id = 'box';
+      boxElement.style.position = 'absolute';
+      boxElement.style.top = '50%';
+      boxElement.style.left = '50%';
+      boxElement.style.transform = 'translate(-50%, -50%)';
+      boxElement.style.width = '500px';
+      boxElement.style.height = '500px';
+      boxElement.style.backgroundColor = 'white';
+      boxElement.style.borderRadius = '5px';
+      boxElement.style.display = 'flex';
+      boxElement.style.flexDirection = 'column';
+      boxElement.style.alignItems = 'center';
+      boxElement.style.justifyContent = 'center';
+
+      boxElement.innerHTML = `
+        <h2>Good job, you fucked Linus</h2>
+        <img src="image-url" alt="Linus" style="width: 300px; height: 300px;">
+        <p>Wish to fuck him faster?</p>
+        <button id="refreshButton">Refresh</button>
+      `;
+
+      document.body.appendChild(boxElement);
+
+      const refreshButton = document.getElementById('refreshButton');
+      refreshButton.addEventListener('click', function() {
+        window.location.reload();
+      });
 
       textElements.forEach(function(element, index) {
         const interval = Math.random() * 100 + 300;
