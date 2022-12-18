@@ -42,6 +42,66 @@
       const audioElement = document.getElementById("audio");
       const tallyElement = document.getElementById("tally");
       let tally = 0;
+      
+      const textElements = document.querySelectorAll(".flickeringText");
+const audioElement = document.getElementById("audio");
+const tallyElement = document.getElementById("tally");
+let tally = 0;
+
+let fPressed = false;
+let aPressed = false;
+let gPressed = false;
+
+document.addEventListener("keydown", function(event) {
+  if (event.code === "KeyF") {
+    fPressed = true;
+  }
+  if (event.code === "KeyA") {
+    aPressed = true;
+  }
+  if (event.code === "KeyG") {
+    gPressed = true;
+  }
+
+  if (fPressed && aPressed && gPressed) {
+    tally = 69;
+    tallyElement.textContent = `Fucks given to Linus: ${tally}/69`;
+  }
+});
+
+document.addEventListener("keyup", function(event) {
+  if (event.code === "KeyF") {
+    fPressed = false;
+  }
+  if (event.code === "KeyA") {
+    aPressed = false;
+  }
+  if (event.code === "KeyG") {
+    gPressed = false;
+  }
+});
+
+textElements.forEach(function(element, index) {
+  const interval = Math.random() * 100 + 300;
+  setInterval(function() {
+    element.style.left = Math.random() * window.innerWidth + "px";
+    element.style.top = Math.random() * window.innerHeight + "px";
+    element.style.fontSize = Math.random() * 50 + "px";
+  }, interval);
+});
+
+textElements.forEach(function(element) {
+  element.addEventListener("click", function() {
+    const audioClone = audioElement.cloneNode();
+    audioClone.play();
+    tally++;
+    if (tally > 69) {
+      tally = 69;
+    }
+    tallyElement.textContent = `Fucks given to Linus: ${tally}/69`;
+  });
+});
+
 
       textElements.forEach(function(element, index) {
         const interval = Math.random() * 100 + 300;
