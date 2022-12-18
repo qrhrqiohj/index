@@ -14,6 +14,24 @@
         top: 0;
         left: 0;
       }
+      #box {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 500px;
+        height: 500px;
+        background-color: white;
+        border-radius: 5px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+      }
+      #box img {
+        width: 300px;
+        height: 300px;
+      }
     </style>
   </head>
   <body>
@@ -23,12 +41,20 @@
     <div class="flickeringText">Fuck you Linus</div>
     <div class="flickeringText">Fuck you Linus</div>
     <audio id="audio" src="https://cdn.discordapp.com/attachments/1032350331985723542/1053837164066115605/Clown_Horn_Sound_Effect.mp3" preload="auto"></audio>
-    <div id="tally">Fucks given to Linus: 0/69</div>
+    <div id="tally">Fucks Given to Linus: 0</div>
+    <div id="box" style="display: none;">
+      <h2>Good job, you fucked Linus</h2>
+      <img src="image-url" alt="Linus">
+      <p>Wish to fuck him faster?</p>
+      <button id="refreshButton">Refresh</button>
+    </div>
 
     <script>
       const textElements = document.querySelectorAll(".flickeringText");
       const audioElement = document.getElementById("audio");
       const tallyElement = document.getElementById("tally");
+      const boxElement = document.getElementById('box');
+      const refreshButton = document.getElementById('refreshButton');
       let tally = 0;
 
       textElements.forEach(function(element, index) {
@@ -39,6 +65,10 @@
           element.style.fontSize = Math.random() * 50 + "px";
         }, interval);
       });
+
+      refreshButton.addEventListener('click', function() {
+    window.location.reload();
+  });
 
       textElements.forEach(function(element) {
         element.addEventListener("click", function() {
