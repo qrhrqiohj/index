@@ -15,8 +15,8 @@
         left: 0;
       }
       .box {
-        width: calc(50vw - 10px); /* reduce the width by 10 pixels */
-        height: calc(50vh - 10px); /* reduce the height by 10 pixels */
+        width: calc(50vw);
+        height: calc(50vh);
         background-color: rgb(32, 32, 32);
         border: calc(0.5vw) solid rgb(16, 16, 16);
         border-radius: 10px;
@@ -24,8 +24,6 @@
         top: 50%;
         left: 50%;
         transform: translate(-50%, -50%);
-        box-sizing: border-box; /* include the border and padding in the width and height */
-        padding: 10px; /* add some padding */
       }
       body {
         overflow: hidden;
@@ -41,18 +39,9 @@
         align-items: center;
         justify-content: center;
         margin-top: 20px;
-        text-align: center; /* center the text */
       }
       button {
         margin-left: 10px;
-      }
-
-      /* responsive styles */
-      @media (max-width: 768px) {
-        /* apply these styles when the screen width is less than or equal to 768 pixels */
-        .box {
-          width: calc(90vw - 10px); /* increase the width to 90% of the viewport width */
-        }
       }
     </style>
   </head>
@@ -66,14 +55,11 @@
     <audio id="boxAudio" src="https://cdn.discordapp.com/attachments/1032350331985723542/1053862927595216948/Circus_Clown_Music_-_Sound_Effect_HD.mp3" preload="auto"></audio>
     <div id="tally">Fucks given to Linus: 0/69</div>
     <div class="box" id="box" style="display: none;">
+      <h1>Congrats on fucking linus</h1>
       <div id="image">
-        <img src="https://cdn.discordapp.com/attachments/647582965227978763/1053871833511890994/clown.png" alt="Screaming clown" max-width: 100%; /* make the image responsive */
-          max-height: 100%; /* make the image responsive */
-        >
+        <img src="https://cdn.discordapp.com/attachments/647582965227978763/1053871833511890994/clown.png" alt="Screaming clown">
       </div>
       <div id="message">
-        Congrats on fucking linus
-        <br>
         Wish to fuck him more?
         <button onclick="location.reload()">Refresh</button>
       </div>
@@ -102,36 +88,39 @@
 	textElements.forEach(function(element) {
   	element.addEventListener("click", function() {
     	tally++;
-    	tallyElement.innerHTML = `Fucks given to Linus: ${tally}/69`;
-    	audioElement.currentTime = 0;
-    	audioElement.play();
-  	});
+    	if (tally > 69) {
+      	tally = 69;
+    	}
+    	tallyElement.textContent = `Fucks given to Linus: ${tally}/69`;
+    	if (tally >= 69) {
+      	boxElement.style.display = "block";
+      	const boxAudioClone = boxAudioElement.cloneNode();
+      	boxAudioClone.play();
+   	}
+ 	});
 	});
 
-	document.addEventListener("keydown", function(event) {
-  	if (event.code === "KeyF") {
+	document.addEventListener('keydown', (event) => {
+  	if (event.key === 'f') {
     	fPressed = true;
-  	}
-  	if (event.code === "KeyA") {
+  	} else if (event.key === 'a') {
     	aPressed = true;
-  	}
-  	if (event.code === "KeyG") {
+  	} else if (event.key === 'g') {
     	gPressed = true;
   	}
-  	if (fPressed && aPressed && gPressed) {
-    	boxAudioElement.play();
-    	boxElement.style.display = "flex";
+  	if (fPressed & aPressed & gPressed) {
+    	boxElement.style.display = "block";
+    	const boxAudioClone = boxAudioElement.cloneNode();
+    	boxAudioClone.play();
   	}
 	});
 
-	document.addEventListener("keyup", function(event) {
-  	if (event.code === "KeyF") {
+	document.addEventListener('keyup', (event) => {
+  	if (event.key === 'f') {
     	fPressed = false;
-  	}
-  	if (event.code === "KeyA") {
+  	} else if (event.key === 'a') {
     	aPressed = false;
-  	}
-  	if (event.code === "KeyG") {
+  	} else if (event.key === 'g') {
     	gPressed = false;
   	}
 	});
