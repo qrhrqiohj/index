@@ -56,7 +56,7 @@
     <div id="tally">Fucks given to Linus: 0/69</div>
     <div class="box" id="box" style="display: none;">
       <div id="image">
-        <img src="https://cdn.discordapp.com/attachments/647582965227978763/1053871833511890994/clown.png" alt="Screaming clown">
+        <img src="https://cdn.discordapp.com/attachments/1032350331985723542/1053845311287726110/portrait-screaming-clown-isolated-on-260nw-245725456.png" alt="Screaming clown">
       </div>
       <div id="message">
         Congrats on fucking linus
@@ -67,75 +67,64 @@
     </div>
 
     <script>
-      const textElements = document.querySelectorAll(".flickeringText");
-      const audioElement = document.getElementById("audio");
-      const boxAudioElement = document.getElementById("boxAudio");
+        const textElements = document.querySelectorAll(".flickeringText");
+	const audioElement = document.getElementById("audio");
+	const boxAudioElement = document.getElementById("boxAudio");
 	const tallyElement = document.getElementById("tally");
-      const boxElement = document.getElementById("box");
-      let tally = 0;
-      let fPressed = false;
-      let aPressed = false;
-      let gPressed = false;
+	const boxElement = document.getElementById("box");
+	let tally = 0;
+	let fPressed = false;
+	let aPressed = false;
+	let gPressed = false;
 
-      textElements.forEach(function(element, index) {
-        const interval = Math.random() * 100 + 300;
-        setInterval(function() {
-          element.style.left = Math.min(Math.random() * window.innerWidth, window.innerWidth - element.offsetWidth) + "px";
-          element.style.top = Math.min(Math.random() * window.innerHeight, window.innerHeight - element.offsetHeight) + "px";
-          element.style.fontSize = Math.random() * 50 + "px";
-        }, interval);
-      });
+	textElements.forEach(function(element, index) {
+  	const interval = Math.random() * 100 + 300;
+  	setInterval(function() {
+    	element.style.left = Math.min(Math.random() * window.innerWidth, window.innerWidth - element.offsetWidth) + "px";
+    	element.style.top = Math.min(Math.random() * window.innerHeight, window.innerHeight - element.offsetHeight) + "px";
+    	element.style.fontSize = Math.random() * 50 + "px";
+  	}, interval);
+	});
 
-      textElements.forEach(function(element) {
-        element.addEventListener("click", function() {
-          const audioClone = audioElement.cloneNode();
-          audioClone.play();
-          tally++;
-          if (tally > 69) {
-            tally = 69;
-          }
-          tallyElement.textContent = `Fucks given to Linus: ${tally}/69`;
-          if (tally >= 69) {
-            boxElement.style.display = "block";
-            const boxAudioClone = boxAudioElement.cloneNode();
-            boxAudioClone.play();
-          }
-        });
-      });
+	textElements.forEach(function(element) {
+  	element.addEventListener("click", function() {
+    	tally++;
+    	if (tally > 69) {
+      	tally = 69;
+    	}
+    	tallyElement.textContent = `Fucks given to Linus: ${tally}/69`;
+    	if (tally >= 69) {
+      	boxElement.style.display = "block";
+      	const boxAudioClone = boxAudioElement.cloneNode();
+      	boxAudioClone.play();
+   	}
+ 	});
+	});
 
-      document.addEventListener('keydown', (event) => {
-        if (event.key === 'f') {
-          fPressed = true;
-        } else if (event.key === 'a') {
-          aPressed = true;
-        } else if (event.key === 'g') {
-          gPressed = true;
-        }
-        if (fPressed & aPressed & gPressed) {
-          const audioClone = audioElement.cloneNode();
-          audioClone.play();
-          tally++;
-          if (tally > 69) {
-            tally = 69;
-          }
-          tallyElement.textContent = `Fucks given to Linus: ${tally}/69`;
-          if (tally >= 69) {
-            boxElement.style.display = "block";
-            const boxAudioClone = boxAudioElement.cloneNode();
-            boxAudioClone.play();
-          }
-        }
-      });
+	document.addEventListener('keydown', (event) => {
+  	if (event.key === 'f') {
+    	fPressed = true;
+  	} else if (event.key === 'a') {
+    	aPressed = true;
+  	} else if (event.key === 'g') {
+    	gPressed = true;
+  	}
+  	if (fPressed & aPressed & gPressed) {
+    	boxElement.style.display = "block";
+    	const boxAudioClone = boxAudioElement.cloneNode();
+    	boxAudioClone.play();
+  	}
+	});
 
-      document.addEventListener('keyup', (event) => {
-        if (event.key === 'f') {
-          fPressed = false;
-        } else if (event.key === 'a') {
-          aPressed = false;
-        } else if (event.key === 'g') {
-          gPressed = false;
-        }
-      });
+	document.addEventListener('keyup', (event) => {
+  	if (event.key === 'f') {
+    	fPressed = false;
+  	} else if (event.key === 'a') {
+    	aPressed = false;
+  	} else if (event.key === 'g') {
+    	gPressed = false;
+  	}
+	});
     </script>
   </body>
 </html>
