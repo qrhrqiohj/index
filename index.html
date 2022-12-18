@@ -61,7 +61,7 @@
       </div>
       <div id="message">
         Wish to fuck him more?
-        <button onclick="location.reload()">Refresh</button>
+        <button onclick="location.reload()">MORE</button>
       </div>
     </div>
 
@@ -123,9 +123,13 @@
       	boxAudioElement.pause();
       	boxVisible = false;
     	} else {
-      	boxElement.style.display = "block";
-      	boxAudioElement.play();
       	boxVisible = true;
+      	if (tally >= 69) {
+        tally = 69;
+        tallyElement.innerHTML = `Fucks given to Linus: ${tally}/69`;
+        boxElement.style.display = "block";
+        boxAudioElement.play();
+      	}
     	}
   	}
 	});
