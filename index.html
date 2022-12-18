@@ -29,6 +29,20 @@
         overflow: hidden;
         background-color: black;
       }
+      #image {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      #message {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-top: 20px;
+      }
+      button {
+        margin-left: 10px;
+      }
     </style>
   </head>
   <body>
@@ -38,13 +52,25 @@
     <div class="flickeringText">Fuck you Linus</div>
     <div class="flickeringText">Fuck you Linus</div>
     <audio id="audio" src="https://cdn.discordapp.com/attachments/1032350331985723542/1053837164066115605/Clown_Horn_Sound_Effect.mp3" preload="auto"></audio>
+    <audio id="boxAudio" src="https://cdn.discordapp.com/attachments/1032350331985723542/1053862927595216948/Circus_Clown_Music_-_Sound_Effect_HD.mp3" preload="auto"></audio>
     <div id="tally">Fucks given to Linus: 0/69</div>
-    <div class="box" id="box" style="display: none;"></div>
+    <div class="box" id="box" style="display: none;">
+      <div id="image">
+        <img src="https://cdn.discordapp.com/attachments/1032350331985723542/1053845311287726110/portrait-screaming-clown-isolated-on-260nw-245725456.png" alt="Screaming clown">
+      </div>
+      <div id="message">
+        Congrats on fucking linus
+        <br>
+        Wish to fuck him more?
+        <button onclick="location.reload()">Refresh</button>
+      </div>
+    </div>
 
     <script>
       const textElements = document.querySelectorAll(".flickeringText");
       const audioElement = document.getElementById("audio");
-      const tallyElement = document.getElementById("tally");
+      const boxAudioElement = document.getElementById("boxAudio");
+	const tallyElement = document.getElementById("tally");
       const boxElement = document.getElementById("box");
       let tally = 0;
       let fPressed = false;
@@ -71,6 +97,8 @@
           tallyElement.textContent = `Fucks given to Linus: ${tally}/69`;
           if (tally >= 69) {
             boxElement.style.display = "block";
+            const boxAudioClone = boxAudioElement.cloneNode();
+            boxAudioClone.play();
           }
         });
       });
@@ -83,12 +111,18 @@
         } else if (event.key === 'g') {
           gPressed = true;
         }
-
-        if (fPressed && aPressed && gPressed) {
-          if (boxElement.style.display === "block") {
-            boxElement.style.display = "none";
-          } else {
+        if (fPressed & aPressed & gPressed) {
+          const audioClone = audioElement.cloneNode();
+          audioClone.play();
+          tally++;
+          if (tally > 69) {
+            tally = 69;
+          }
+          tallyElement.textContent = `Fucks given to Linus: ${tally}/69`;
+          if (tally >= 69) {
             boxElement.style.display = "block";
+            const boxAudioClone = boxAudioElement.cloneNode();
+            boxAudioClone.play();
           }
         }
       });
