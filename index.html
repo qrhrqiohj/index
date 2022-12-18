@@ -1,4 +1,4 @@
-<html>
+<<html>
   <head>
     <style>
       body {
@@ -14,6 +14,16 @@
         top: 0;
         left: 0;
       }
+      .box {
+        width: 100px;
+        height: 100px;
+        background-color: rgb(64, 64, 64);
+        border: 10px solid rgb(32, 32, 32);
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+      }
     </style>
   </head>
   <body>
@@ -24,33 +34,37 @@
     <div class="flickeringText">Fuck you Linus</div>
     <audio id="audio" src="https://cdn.discordapp.com/attachments/1032350331985723542/1053837164066115605/Clown_Horn_Sound_Effect.mp3" preload="auto"></audio>
     <div id="tally">Fucks given to Linus: 0/69</div>
+    <div class="box" id="box" style="display: none;"></div>
 
     <script>
-      const textElements = document.querySelectorAll(".flickeringText");
-      const audioElement = document.getElementById("audio");
-      const tallyElement = document.getElementById("tally");
-      let tally = 0;
+        const textElements = document.querySelectorAll(".flickeringText");
+        const audioElement = document.getElementById("audio");
+        const tallyElement = document.getElementById("tally");
+        let tally = 0;
 
-      textElements.forEach(function(element, index) {
-        const interval = Math.random() * 100 + 300;
-        setInterval(function() {
-          element.style.left = Math.random() * window.innerWidth + "px";
-          element.style.top = Math.random() * window.innerHeight + "px";
-          element.style.fontSize = Math.random() * 50 + "px";
-        }, interval);
-      });
-
-      textElements.forEach(function(element) {
-        element.addEventListener("click", function() {
-          const audioClone = audioElement.cloneNode();
-          audioClone.play();
-          tally++;
-          if (tally > 69) {
-            tally = 69;
-          }
-          tallyElement.textContent = `Fucks given to Linus: ${tally}/69`;
+        textElements.forEach(function(element, index) {
+          const interval = Math.random() * 100 + 300;
+          setInterval(function() {
+            element.style.left = Math.random() * window.innerWidth + "px";
+            element.style.top = Math.random() * window.innerHeight + "px";
+            element.style.fontSize = Math.random() * 50 + "px";
+          }, interval);
         });
-      });
-    </script>
+
+        textElements.forEach(function(element) {
+          element.addEventListener("click", function() {
+            const audioClone = audioElement.cloneNode();
+            audioClone.play();
+            tally++;
+            if (tally > 69) {
+              tally = 69;
+            }
+            tallyElement.textContent = `Fucks given to Linus: ${tally}/69`;
+            if (tally >= 69) {
+              document.getElementById("box").style.display = "block";
+            }
+          });
+        });
+      </script>
   </body>
 </html>
