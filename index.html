@@ -75,6 +75,7 @@
 	let fPressed = false;
 	let aPressed = false;
 	let gPressed = false;
+	let boxVisible = false;
 
 	textElements.forEach(function(element, index) {
   	const interval = Math.random() * 100 + 300;
@@ -107,27 +108,31 @@
   	});
 	});
 
-	document.addEventListener('keydown', (event) => {
-  	if (event.key === 'f') {
+	document.addEventListener("keydown", function(event) {
+  	if (event.code === "KeyF") {
     	fPressed = true;
-  	} else if (event.key === 'a') {
+  	} else if (event.code === "KeyA") {
     	aPressed = true;
-  	} else if (event.key === 'g') {
+  	} else if (event.code === "KeyG") {
     	gPressed = true;
   	}
-  	if (fPressed & aPressed & gPressed) {
-    	boxElement.style.display = "block";
-    	const boxAudioClone = boxAudioElement.cloneNode();
-    	boxAudioClone.play();
+  	if (fPressed && aPressed && gPressed) {
+    	if (boxVisible) {
+      	boxElement.style.display = "none";
+      	boxVisible = false;
+    	} else {
+      	boxElement.style.display = "block";
+      	boxVisible = true;
+    	}
   	}
 	});
 
-	document.addEventListener('keyup', (event) => {
-  	if (event.key === 'f') {
+	document.addEventListener("keyup", function(event) {
+  	if (event.code === "KeyF") {
     	fPressed = false;
-  	} else if (event.key === 'a') {
+  	} else if (event.code === "KeyA") {
     	aPressed = false;
-  	} else if (event.key === 'g') {
+  	} else if (event.code === "KeyG") {
     	gPressed = false;
   	}
 	});
