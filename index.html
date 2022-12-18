@@ -45,7 +45,10 @@
           const audioClone = audioElement.cloneNode();
           audioClone.play();
           tally++;
-          tallyElement.textContent = `Tally: ${tally}`;
+          if (tally > 69) {
+            tally = 69;
+          }
+          tallyElement.textContent = `Tally: ${tally}/69`;
         });
       });
     </script>
