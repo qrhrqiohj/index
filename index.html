@@ -80,7 +80,7 @@
     </div>
 
     <script>
-        const textElements = document.querySelectorAll(".flickeringText");
+      const textElements = document.querySelectorAll(".flickeringText");
 	const audioElement = document.getElementById("audio");
 	const boxAudioElement = document.getElementById("boxAudio");
 	const tallyElement = document.getElementById("tally");
@@ -109,20 +109,34 @@
 	});
 
 	document.addEventListener("keydown", function(event) {
-  	if (event.code === "KeyF") {
+  	if (tally === 69) {
+    	return;
+  	}
+
+  	if (event.key === "f") {
     	fPressed = true;
   	}
-  	if (event.code === "KeyA") {
+  	if (event.key === "a") {
     	aPressed = true;
   	}
-  	if (event.code === "KeyG") {
-    	gPressed = true;
+  	if (event.key === "g") {
+   	gPressed = true;
   	}
-  	if (fPressed && aPressed && gPressed) {
+
+  	tally++;
+  	tallyElement.innerHTML = `Fucks given to Linus: ${tally}/69`;
+
+  	audioElement.currentTime = 0;
+  	audioElement.play();
+
+  	if (tally === 69 && fPressed && aPressed && gPressed) {
+    	// show the box and play the box audio
+    	boxElement.style.display = "block";
+    	boxAudioElement.currentTime = 0;
     	boxAudioElement.play();
-    	boxElement.style.display = "flex";
   	}
 	});
+
 
 	document.addEventListener("keyup", function(event) {
   	if (event.code === "KeyF") {
