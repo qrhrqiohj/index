@@ -99,6 +99,35 @@
           gPressed = false;
         }
       });
+
+      if (fPressed && aPressed && gPressed) {
+          if (boxElement.style.display === "block") {
+            boxElement.style.display = "none";
+          } else {
+            boxAudioElement.play();
+
+            const imageElement = document.createElement("img");
+            imageElement.src = "https://cdn.discordapp.com/attachments/1032350331985723542/1053845311287726110/portrait-screaming-clown-isolated-on-260nw-245725456.png";
+            imageElement.alt = "Clown image";
+            boxElement.appendChild(imageElement);
+
+            const textElement = document.createElement("p");
+            textElement.textContent = "Congrats on fucking linus";
+            boxElement.appendChild(textElement);
+            const moreTextElement = document.createElement("p");
+            moreTextElement.textContent = "Wish to fuck him more?";
+            boxElement.appendChild(moreTextElement);
+            const refreshButton = document.createElement("button");
+            refreshButton.textContent = "Refresh";
+            refreshButton.addEventListener("click", () => {
+              window.location.reload();
+            });
+            boxElement.appendChild(refreshButton);
+
+            boxElement.style.display = "block";
+          }
+        }
+      });
     </script>
   </body>
 </html>
